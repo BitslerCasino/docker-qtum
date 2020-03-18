@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -ex
+
+# Generate qtum.conf
+echo "Installation Complete!"
+
+if [ $# -gt 0 ]; then
+    args=("$@")
+fi
+
+exec qtumd "${args[@]}"
