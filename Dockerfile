@@ -9,7 +9,7 @@ RUN groupadd -g ${GROUP_ID} qtum \
   && useradd -u ${USER_ID} -g qtum -s /bin/bash -m -d /qtum qtum \
   && set -x \
   && apt-get update -y \
-  && apt-get install -y curl gosu \
+  && apt-get install -y curl gosu wget \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ARG version=0.19.0.1
@@ -28,6 +28,8 @@ WORKDIR /qtum
 
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN wget -P /qtum/.qtum https://s3.amazonaws.com/bootstrap.dat/bootstrap.dat
+
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 CMD ["qtum_oneshot"]
