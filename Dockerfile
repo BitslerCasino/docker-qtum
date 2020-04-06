@@ -28,8 +28,6 @@ WORKDIR /qtum
 
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
-RUN wget -P /qtum/.qtum https://s3.amazonaws.com/bootstrap.dat/bootstrap.dat
-
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 CMD ["qtum_oneshot"]
