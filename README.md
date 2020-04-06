@@ -26,7 +26,4 @@ Check Logs
 docker logs -f qtum-node
 ```
 
-Auto Installation
-```
-sudo bash -c "$(curl -L https://git.io/JvXHD)"
-```
+
